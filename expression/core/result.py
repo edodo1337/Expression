@@ -132,7 +132,7 @@ class Result(
             case Result(error=error):
                 return Result[_TSourceOut, _TResult].Error(mapper(error))
 
-    def bind(self, mapper: Callable[[_TSourceOut], Result[_TResult, _TError]]) -> Result[_TResult, _TError]:
+    def bind(self, mapper: Callable[[_TSourceOut], Result[_TResult, _TError | _TOther]]) -> Result[_TResult, _TError | _TOther]:
         """Bind result.
 
         Return a result of the value after applying the mapping
